@@ -1,0 +1,20 @@
+LHstation
+Lionhead	
+Lionhead
+LHstation.dat
+none
+0
+#
+year,0,0,0
+month,0,0,0
+day,0,0,0
+hrmin,0,0,0
+Battery,1,V,Battery Voltage
+AirTemp,1,F, Current Temp.
+Humid,1,%, Relative Humidity
+AvgWind,1,mph, Avg. Wind Speed
+MaxWind,1,mph, Max. Wind Speed
+DirWind,1,deg, Avg. Wind Dir.
+Depth,1,in,Snow Depth
+#
+Time,calcwx_time,year,month,day,hrmin,GNFAC

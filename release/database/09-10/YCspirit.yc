@@ -1,0 +1,20 @@
+YCaspirit
+Amer. Spirit
+Yellowstone Club
+YCspirit.dat
+none
+0
+#
+year,0,0,0
+month,0,0,0
+day,0,0,0
+hrmin,0,0,0
+AirTemp,1,F, Air Temperature
+Humidity,1,%,Relative Humidity
+WindSpeed,1,mph, Average Wind Speed
+WindMax,1,mph,Maximum Wind Speed
+WindDir,1,deg,Wind Direction
+SWin,1,W/m^2,Incoming Shortwave
+Longwave,1,W/m^2,Incoming Longwave
+#
+Time,calcwx_time,year,month,day,hrmin,GNFAC

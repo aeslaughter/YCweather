@@ -1,0 +1,21 @@
+BBalpine
+Alpine
+Bridger Bowl
+BBalpine.dat
+none
+0
+#
+year,0,0,0
+month,0,0,0
+day,0,0,0
+hrmin,0,0,0
+AirTemp,1,F,Air Temperature
+Humidity,1,%,Humidity
+AirPress,1,inHg,Air Pressure
+TotalSnow,1,in,Total Snow Depth
+DaySnow,1,in, 24 Hour Snowfall
+H20Content,1,in,Water Content
+WindSpeed,1,mph,Wind Velocity
+WindMax,1,mph,Maximum Wind Velocity
+#
+Time,calcwx_time,year,month,day,hrmin,GNFAC

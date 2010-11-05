@@ -1,0 +1,57 @@
+# units.txt
+# UNITS contains information for assignings unit labels and conversions
+# Each row of data containsthe following information:
+#	Metric id,English id, Axis Label, Metric Latex Units,...
+#		English Latex Units, Metric Tex Units, English Tex Units,...
+#		Conversion (metric to english)
+#
+# This file is used by getunit.m, which can easily be modified 
+# for custom conversion such as in the case of temperture
+#
+# Notes:
+#  1. The conversion of temperature is included in the 
+#     m-file getunit.m because a simple multiplier does not exist, the 
+#     6999 tags is used to indicate that, see getunit.m
+#  2. Some units do not have english conversions, such as temperature
+#	gradient where both id's are in metric.
+#-------------------------------------------------------------------------
+
+# TEMPERATURE/TEMPERATURE GRADIENT
+C, F, Temperature, $^{\circ} C$, $^{\circ}F$, \circC, \circF, 6999
+C/m, C/m, Temperature Gradient, $^{\circ}C/m$, $^{\circ}C/m$, \circC/m, \circC/m,  1
+C/cm, C/cm, Temperature Gradient, $^{\circ}C/cm$, $^{\circ}C/cm$, \cir C/cm, \circC/cm, 1
+
+# DISTANCE
+cm, in, Depth, $cm$, $in$, cm, in, 0.394
+m, ft, Depth, $m$, $ft$, m, ft, 3.281
+km, mi, Distance, $km$, $mi$, km, mi, 0.621
+
+# DENSITY
+kg/m^3, lb/in^3, Density, $kg/m^{3}$, $lb/in^{3}$, kg/m^3, lb/in^3, 3.613e-5 
+
+# PRESSURE
+mmHg, inHg, Pressure, $mmHg$, $inHg$, mmHg, inHg, 0.0394
+kPa, psi, Pressure, $kPa$, $psi$, kPa, psi, 0.145
+
+# VELOCITY
+m/s, mph,  Velocity,  $m/s$, $mph$, m/s, mph,  2.237
+
+# IRRADIANCE (no english equivalent provided)
+W/m^2, W/m^2, Irradiance, $W/m^{2}$, $W/m^{2}$, W/m^2, W/m^2, 1
+
+# UNITLESS 
+deg, deg, Location, $^{\circ}$, $^{\circ}$, ^\circ, ^\circ, 1
+%, %, Percent, $\%$, $\%$, %, %, 1
+
+# ELECTRICAL
+V, V, Voltage, $V$, $V$, V, V, 1
+ohm, ohm, Resistance, $\Omega$, $\Omega$, \Omega, \Omega , 1
+
+# THERMAL
+W/mK, W/mK, Thermal Conductance, $W/mK$, $W/mK$, W/mK, W/mK, 1
+kJ/kgK, kJ/kgK, Heat Capacity, $kJ/kgK$, $kJ/kgK$, kJ/kgK, kJ/KgK, 1
+
+# MASS FLUX RATE
+mmH20/m^2/hr, mmH20/m^2/hr, Mass Flux Rate, $mm\cdot H_{2}O/m^{2}/hr$,  $mm\cdot H_{2}O/m^{2}/hr$, mm\cdotH_2O/m^2 /hr, mm\cdotH_2O/m^2 /hr, 1                        1
+
+

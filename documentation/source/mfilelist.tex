@@ -1,0 +1,47 @@
+\newcommand{\MATLABitem}[2]{\item \hyperref[mfile:#1]{\bfseries #2}: \label{mlist:#1}}
+\newcommand{\MATLABsubitem}[1]{\item{\bfseries #1}: }
+\begin{itemize}[itemsep=0pt]
+    \MATLABitem{DailylogGUI}{DailylogGUI.m} M-file for DailylogGUI.fig
+    \MATLABitem{ImageGUI}{ImageGUI.m} M-file for ImageGUI.fig
+    \MATLABitem{MAIN}{MAIN.m} is the controlling program for the YCweather software.
+    \MATLABitem{Plotmenus}{Plotmenus.m} builds the variable list for each station listed in "sta" and
+    \MATLABitem{WorkspaceGUI}{WorkspaceGUI.m} M-file for WorkspaceGUI.fig generated using MATLAB's Guide
+    \MATLABitem{XYscatter}{XYscatter.m} is custom plotting program based on MATLAB plot function.
+    \MATLABitem{YCbuild}{YCbuild.m} compiles and posts the YCweather software package
+    \MATLABitem{YCweather}{YCweather.m} is the front end to YCmain.exe program.
+    \MATLABitem{applysettings}{applysettings.m} captures, inserts, or apply the program settings based on
+    \MATLABitem{buildsidebars}{buildsidebars.m} constructs panels that attach to the side of the main
+    \MATLABitem{calcwxflux}{calcwx\_flux.m} calculates the fluxes and related properties for YCweather
+    \MATLABitem{calcwxlabLW}{calcwx\_labLW.m} 
+    \MATLABitem{calcwxtime}{calcwx\_time.m} converts time data into MATLAB serial format
+    \MATLABitem{callbackadd}{callback\_add.m} log enables user to add a new daily log to database
+    \MATLABitem{callbackclick}{callback\_click.m} operates when the user selects a variable.
+    \MATLABitem{callbackexport}{callback\_export.m} allows user to export data to *.txt or *.xlsx files
+    \MATLABitem{callbackexportTHERMAL}{callback\_exportTHERMAL.m} opens a GUI for exporting data to thermal model
+    \MATLABitem{callbackopenimage}{callback\_openimage.m} opens an image viewer for each station selected;
+    \MATLABitem{callbackopenlog}{callback\_openlog.m} 
+    \MATLABitem{callbackplotTCdata}{callback\_plotTCdata.m} plots thermocouple data with depth
+    \MATLABitem{callbackplotdata}{callback\_plotdata.m} plots the selected data.
+    \MATLABitem{callbackpref}{callback\_pref.m} 
+    \MATLABitem{callbackpress}{callback\_press.m} operates when the secondary or primary button is pressed
+    \MATLABitem{callbackreadWS}{callback\_readWS.m} 
+    \MATLABitem{callbackrecent}{callback\_recent.m} builds and maintains the open recent list in file menu
+    \MATLABitem{callbacksaveWS}{callback\_saveWS.m} - saves tge current workspace to a *.mat file
+    \MATLABitem{callbacksearch}{callback\_search.m} uses the keywords entered in the daily logs text files
+    \MATLABitem{callbackseason}{callback\_season.m} updates the data displayed by YCweather
+    \MATLABitem{callbacksettime}{callback\_settime.m} executes when user changes the start/end times
+    \MATLABitem{callbacksidebar}{callback\_sidebar.m} opens or closes sidebars (i.e. items from the Window
+    \MATLABitem{callbackvarmenu}{callback\_varmenu.m} is the callback function for the MAIN program that opens
+    \MATLABitem{errorlog}{errorlog.m} saves error information to errorlog.txt
+    \MATLABitem{getdata}{get\_data.m} extracts the data from the a variable
+    \MATLABitem{getselected}{getselected.m} builds a cell array of the selected stations.
+    \MATLABitem{getunit}{getunit.m} returns unit information or converts units.
+    \MATLABitem{groupitems}{group\_items.m} 
+    \MATLABitem{logviewer}{log\_viewer.m} opens a GUI to view images.
+    \MATLABitem{prefGUI}{prefGUI.m} M-file for prefGUI.fig as created using GUIDE
+    \MATLABitem{radthermGUI}{radthermGUI.m} M-file for radthermGUI.fig
+    \MATLABitem{readdat}{read\_dat.m} reads data from the station *.yc format file and builds a data
+    \MATLABitem{syncdata}{syncdata.m} sychronizes database with current weather data
+    \MATLABitem{thermGUI}{thermGUI.m} M-file for thermGUI.fig
+    \MATLABitem{waitbar}{waitbar.m} a modified version of MATLAB's waitbar function.
+\end{itemize}

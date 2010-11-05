@@ -1,0 +1,17 @@
+BBridge
+Ridge
+Bridger Bowl
+BBridge.dat
+none
+0
+#
+year,0,0,0
+month,0,0,0
+day,0,0,0
+hrmin,0,0,0
+AirTemp,1,F,Air Temperature
+WindSpeed,1,mph,Wind Velocity
+WindMax,1,mph,Maximum Wind Velocity
+WindDir,1,deg,Wind Direction
+#
+Time,calcwx_time,year,month,day,hrmin,GNFAC
