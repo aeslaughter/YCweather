@@ -32,6 +32,7 @@ function YCbuild(action,varargin)
         files{3} = [real,'help.pdf'];
         files{4} = [real,'mesowest.mwu'];
         files{5} = [real,'winscp.exe'];
+        files{6} = [real,'license.txt'];
 
     % 1.3 - Specify the installer package
         installer = [prog,'YCinstallerFiles\',...

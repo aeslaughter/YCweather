@@ -1,6 +1,7 @@
 % PREAMBLE TO DOCUMENT
 \documentclass[11pt,oneside,titlepage]{article}		% Type of document
 \usepackage{slaughter}								% Use standard Slaughter package
+\usepackage{fancyvrb}
 
 % Set document headers
 \usepackage{fancyhdr}						
@@ -28,6 +29,12 @@
 \renewcommand\contentsname{Table of Contents}\pagestyle{fancy}
 \pagenumbering{roman}
 \maketitle
+
+\clearpage\thispagestyle{empty}
+\fvset{fontsize=\footnotesize, fontfamily=tt}
+\VerbatimInput{license.txt}
+\clearpage
+
 \tableofcontents\newpage
 \listoffigures
 \newpage

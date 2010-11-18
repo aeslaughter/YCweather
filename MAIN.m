@@ -56,8 +56,8 @@ try
     callback_readWS(gui,[],[cd,'\default.mat']);  
     GUI = guidata(gui);
     GUI.main = gui;
-    GUI.version = 0.7;        
-    GUI.verdate = 'Nov. 5, 2010';
+    GUI.version = 0.71;        
+    GUI.verdate = 'Nov. 18, 2010';
     guidata(gui,GUI); 
     save('default.mat','-mat','-struct','GUI');       
     set(gui,'Visible','on');
@@ -80,7 +80,7 @@ end
 
 %--------------------------------------------------------------------------
 % CALLBACK: help
-function help(hObject,eventdata,gui)
+function help(~,~,~)
     if exist('help.pdf','file');
         winopen('help.pdf');
     else
@@ -90,22 +90,31 @@ function help(hObject,eventdata,gui)
 
 %--------------------------------------------------------------------------
 % CALLBACK: exit
-function exit(hObject,eventdata,gui)
+function exit(~,~,~)
 close all; fclose all;
 
 %--------------------------------------------------------------------------
-% CALLBACK: about
-function about(hObject,eventdata,gui)
-   GUI = guidata(gui);
-   m{1} = ['YCweather was created by Andrew E. Slaughter and ',...
-       'cannot be used without expressed permission.'];
-   m{2} = '';
-   m{3} = ['Version: ',num2str(GUI.version)];
-   m{4} = ['Last Updated: ',GUI.verdate];
-   m{5} = '';
-   m{6} = 'Copyright 2010, Andrew E. Slaughter';
+function about(~,~,gui)
+% ABOUT opens the Snow Optics Toolbox information window
 
-   msgbox(m,'About YCweather');
+GUI = guidata(gui);
+textbox = {['Version: ',num2str(GUI.version),' (',GUI.verdate,')'];
+           'Andrew E. Slaughter (andrew.e.slaughter@gmail.com)';
+           'Montana State University';
+           'http://www.coe.montana.edu/ce/subzero/snow';
+           'http://github.com/aeslaughter/YCweather'};
+       
+fid = fopen('license.txt','r');       
+lic = textscan(fid,'%s','delimiter','\n'); lic = lic{1};
+fclose(fid);
+
+d = dialog('Units','Normalized','Position',[0.375,0.3,0.26,0.4],'Name',...
+    'YCweather','WindowStyle','Normal');
+annotation(d,'textbox',[0.005,0.88,0.99,0.1],'String','YCweather',...
+    'FontSize',10,'EdgeColor','none','FontWeight','Bold');
+annotation(d,'textbox',[0.01,0.76,0.98,0.18],'String',textbox,...
+    'FontSize',9,'EdgeColor','none','VerticalAlignment','top');
+annotation(d,'textbox',[0.01,0.01,0.98,0.74],'String',lic,'FontSize',8);
 
 %--------------------------------------------------------------------------     
 % SUBFUNTION: buildgui 
@@ -215,7 +224,7 @@ function buildGUI(gui)
             uimenu(records_menu,'Label','Check for new  weather data',...
                 'Callback',{'callback_syncdata'},'Accelerator','n');
             uimenu(records_menu,'Label','Update MesoWest data',...
-                'Callback',{'callback_updatemesowest'},'Accelerator','M',...
+                'Callback',{'callback_updatemesowest',true},'Accelerator','M',...
                 'enable','off','Tag','mesowest_menu');
             uimenu(records_menu,'Label','Open Image Viewer','Callback',...
                 {'callback_openimage'},'Separator','on',...
@@ -275,7 +284,7 @@ function buildGUI(gui)
             'separator','on');
         uipushtool(tbar,'Cdata',icon.mesowest,'TooltipString',...
             'update MesoWest data','separator','on','ClickedCallback',...
-            {'callback_updatemesowest'},'Tag','mesowest_btn');               
+            {'callback_updatemesowest',true},'Tag','mesowest_btn');               
         uipushtool(tbar,'Cdata',icon.list,'TooltipString',...
             'weather data list','ClickedCallback',{'callback_varmenu'},...
             'separator','off');
