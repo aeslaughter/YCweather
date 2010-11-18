@@ -1,6 +1,9 @@
 \msusection{Application Details} \label{sec:advanced}
 The following section details of the operation of YCweather.  This section is meant to aid researchers at the Subzero Science and Engineering Research Facility maintain and update the software.  YCweather was written with MATLAB version 7.9.0.529 (R2009b).  If you are using a newer version of MATLAB for editting YCweather the MATLAB run time component must be updated on all machines attempting to execute YCweather (see Section \ref{sec:compile} for additional details).
 
+\msusubsection{Source Code}
+The source code for YCweather utilizes the \href{http://git-scm.com/}{git} version control system and the code may be pulled from \href{https://github.com/aeslaughter/YCweather}{github.com}. There a numerous Internet sources to aid in learning how to use both \href{http://git-scm.com/}{git} and \href{https://github.com/}{github}.
+
 \msusubsection{Basic YCweather Operations}
 The executable version of YCweather relies on four primary files that must be located in the same location: \texttt{YCweather.exe}, \texttt{YCmain.exe}, \texttt{default.mat}, and \texttt{version.txt}.  \texttt{YCweather.exe} is a wrapper program that keeps the main program \texttt{YCmain.exe} current based on the installed version (\texttt{version.txt}) and the available version on the YCweather website (Section \ref{sec:compile}).  \texttt{YCmain.exe} may be executed without \texttt{YCweather.exe}, but will never update in this case.  The source code for \texttt{YCweather.exe} and \texttt{YCmain.exe} are MATLAB m-files \texttt{YCweather.m} and \texttt{MAIN.m}, respectively.  \texttt{YCweather.m} will not operate correctly via the m-file; \texttt{MAIN.m} may be run via MATLAB if desired.
 

@@ -1,25 +1,20 @@
-function X = mesowest(stn,tm,sea)
+function X = mesowest(stn,name,tm,sea)
 % MESOWEST gather data from MesoWest website.
-
-% - TEST THE FUNCTION
-% if nargin == 0;
-%     stn = 'YLWM8';
-%     tm = [now-2.25,now];
-%     sea = '09-10';
-% end
 
 % 1 - INTILIZE PARAMETERS FOR GATHERING THE DATA
     % 1.1 - Setup numbers of hours desired and counters
     n = (tm(2) - tm(1))*24; % Number of hours
     K = ceil(n/24); % Total number of days
-    k = 0; % Counter
-    
+    k = 1; % Counter
+
     % 1.2 - Intialize variables and establish waitbar
     cur_time = tm(2); % Current time
     T = []; % Time array
     data = []; % Data array
-    hbar = waitbar(0,'Updating MesoWest data, please wait...');
+    hbar = waitbar(0,['Updating ',name,' (',stn,...
+        ') data , please wait...']);
 
+    
 % 2 - LOOP THROUGH THE DESIRED DAYS
 for i = n:-24:0;
     % 2.1 - Set the number of hours desired for this day
@@ -29,15 +24,12 @@ for i = n:-24:0;
         hours = i;
     end
     
-    % 2.2 - Update the time and counter
-    cur_time = cur_time - hours/24; 
-    k = k + 1;
-    
-    % 2.3 - Collect the data and parameters
-    [t,d,parm{k},name] = gatherwebdata(cur_time,hours,stn);
+    % 2.2 - Collect the data and parameters
+    [t,d,parm{k}] = gatherwebdata(cur_time,hours,stn);
+    if isnan(t); X = []; close(hbar); return; end
     parm_size = length(parm{k});
     
-    % 2.4 - Adjust for array mismatchs (some files have data that is only
+    % 2.3 - Adjust for array mismatchs (some files have data that is only
     % displayed on a daily basis, so in some cases when a partial day is
     % downloaded this daily data will not be present, this accounts for
     % that issue)
@@ -45,17 +37,21 @@ for i = n:-24:0;
     sz_data = size(data,2); % Size of the complete data set being built
     
     if i ~= n && sz_d > sz_data; % Case when new is bigger than total
-        padsize = [0, sz_d - sz_data]
+        padsize = [0, sz_d - sz_data];
         data = padarray(data, padsize , NaN, 'post');
         
     elseif i ~= n && sz_d < sz_data; % Case when total is bigger than new
-        padsize =  [0, sz_data - sz_d]
+        padsize =  [0, sz_data - sz_d];
         data = padarray(d, padsize, NaN, 'post');
         
     elseif ~isempty(d); % Otherwise they are the same, but ignore empty
         T = [T;t];
         data = [data;d];
     end
+    
+    % 2.4 - Update the time and counter
+    cur_time = cur_time - hours/24;
+    k = k + 1;
     
     % 2.5 - Update the waitbar
     waitbar(k/K,hbar);
@@ -75,20 +71,19 @@ close(hbar);
         end
     end
 
-% 4 - BUILD DATA STRUCTURE FOR OUTPUT
+% 4 - RE-BUILD DATA STRUCTURE FOR OUTPUT
     X.Time = T;    
     X.display = name;
     X.variables = var;
     X.group = 'Mesowest';
-    X.tag = [stn,'_mesowest']; X.subfolder = stn;
+    X.subfolder = stn;
     X.season = sea;
     X.arraryID = NaN;
     X.datfile = '';
     X.TCprofile = 'none';
-    
 
 %--------------------------------------------------------------------------
-function [T,data,parm,name] = gatherwebdata(tm,hours,stn)
+function [T,data,parm] = gatherwebdata(tm,hours,stn)
 
 % 1 - SET THE KNOWN URL INPUTS
     unit = '1'; % 0=english; 1=metric
@@ -138,25 +133,29 @@ function [T,data,parm,name] = gatherwebdata(tm,hours,stn)
     end
     
 % 6 - EXTRACT THE WEATHER DATA    
-    [T,data,parm,name] = extractdata(C,stn);
+    [T,data,parm] = extractdata(C,stn);
 
-    
 %--------------------------------------------------------------------------
-function [tm,data,parm,name] = extractdata(C,stn)
+function [tm,data,parm] = extractdata(C,stn)
 % EXTRACTDATA
 
 % 1 - DETERMINE STATION NAME
     itm = C{9};
-    strt = strfind(itm,stn) + length(stn);
-    for i = strt:length(itm);
-        if ~isnan(str2double(itm(i))); stp = i-1; break; end
-    end
-    name = lower(strtrim(itm(strt:stp)));
-    name(1) = upper(name(1));
+%     strt = strfind(itm,stn) + length(stn);
+%     for i = strt:length(itm);
+%         if ~isnan(str2double(itm(i))); stp = i-1; break; end
+%     end
+%     name = lower(strtrim(itm(strt:stp)));
+%     name(1) = upper(name(1));
     
 % 2 - REMOVE THE PARAMETER LABELS  
     parm_idx = strmatch('PARM',C);
     parm = textscan(C{parm_idx},'%s','delimiter',',=');
+    if isempty(parm); 
+        tm = NaN; data = NaN;
+        return;
+    end
+        
     parm = parm{1}(2:end);
 
 % 3 - REMOVE THE WEATHER DATA   

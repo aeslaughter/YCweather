@@ -41,7 +41,7 @@ try
             for i = 1:nfiles;
                 % 2.2.1 - Read file
                 filename   = [loc,files(i).name];
-                [~,name] = fileparts(filename);
+                [~,name]   = fileparts(filename);
                 temp       = read_dat(filename);
                 tag = temp.tag; S.(tag) = temp;
 
@@ -62,13 +62,16 @@ try
     if exist([db,'mesowest.txt'],'file') ...
             && GUI.settings.pref.allowmesowest == 1;
         fid = fopen(mesofile);
-        W = textscan(fid,'%s%s','delimiter',',');
-        stn = W{1}; grp = W{2};
+        W = textscan(fid,'%s%s%s','delimiter',',');
+        stn = W{1}; nm = W{2}; grp = W{3};
         fclose(fid);
         for i = 1:length(stn);
-            temp = mesowest(stn{i},GUI.time,season);
-            if isempty(temp); continue; end
-            tag = temp.tag; S.(tag) = temp; S.(tag).group = grp{i};
+            tag = [stn{i},'_mesowest'];
+            S.(tag) = emptystation(GUI);
+            S.(tag).display = nm{i};
+            S.(tag).group = grp{i};
+            S.(tag).subfolder = stn{i};
+            
             groups{k} = grp{i};
             k = k + 1;
             set(mh,'enable','on');
@@ -235,7 +238,7 @@ function [tmin,tmax] = placebuttons(btn,tag,S)
     
 % 2 - Set the buttons    
     bot = 0;        % Initilize botton location
-    
+
     for i = 1:length(tag);
         % 2.1 - Build time label
             [rng,tmin(i),tmax(i)] = timelabel(S.(tag{i}).Time);
@@ -273,4 +276,18 @@ function callback_station(hObject,eventdata)
     if get(hObject,'Value') == 1 && ~isempty(test);
         callback_updatemesowest(h.mesowest_btn,[],hObject);
     end
+    
+%--------------------------------------------------------------------------
+function X = emptystation(GUI)
+% EMPTYSTATION produces an empty data structure (same as read_dat)
+
+    X.Time = GUI.time;    
+    X.display = '';
+    X.variables = struct([]);
+    X.group = '';
+    X.subfolder = '';
+    X.season = GUI.season;
+    X.arraryID = NaN;
+    X.datfile = '';
+    X.TCprofile = 'none';
     
