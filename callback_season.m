@@ -218,7 +218,7 @@ try
     end
     buildsidebars(gui);
     disp('Complete.');
-    movegui(gui,'onscreen');
+    %movegui(gui,'onscreen');
 
 catch
     mes = ['Error occured opening data from season/folder popup',...

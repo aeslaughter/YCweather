@@ -138,7 +138,7 @@ function applyWS(hObject,GUIold,filename)
 
 % 3 - SET START/END TIMES
     % 3.1 - Force default.mat to always use current time
-        [p,f] = fileparts(filename);
+        [~,f] = fileparts(filename);
         if strcmpi(f,'default'); GUI.settings.pref.timetype = 1; end
 
     % 3.2 - Prompt user for type of time, if selected
@@ -164,7 +164,7 @@ function applyWS(hObject,GUIold,filename)
             os = GUI.settings.pref.timeoffset;
             GUI.time = [floor(max(t)-os/24),max(t)];
         end
-
+        
     % 3.4 - Insert the times into the GUI
         set_times(h,GUI.time(1),'strt'); 
         set_times(h,GUI.time(2),'end');

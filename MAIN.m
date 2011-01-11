@@ -56,8 +56,8 @@ try
     callback_readWS(gui,[],[cd,'\default.mat']);  
     GUI = guidata(gui);
     GUI.main = gui;
-    GUI.version = 0.72;        
-    GUI.verdate = 'Nov. 18, 2010';
+    GUI.version = 0.73;        
+    GUI.verdate = 'Jan. 11, 2011';
     guidata(gui,GUI); 
     save('default.mat','-mat','-struct','GUI');       
     set(gui,'Visible','on');
@@ -221,8 +221,8 @@ function buildGUI(gui)
 
     % 3.3 - Data menu
         records_menu = uimenu('Parent',gui,'Label','Data','tag','Dmenu');
-            uimenu(records_menu,'Label','Check for new  weather data',...
-                'Callback',{'callback_syncdata'},'Accelerator','n');
+            uimenu(records_menu,'Label','Check for new weather data',...
+                'Callback',{'callback_syncdata','menu'},'Accelerator','n');
             uimenu(records_menu,'Label','Update MesoWest data',...
                 'Callback',{'callback_updatemesowest',true},'Accelerator','M',...
                 'enable','off','Tag','mesowest_menu');

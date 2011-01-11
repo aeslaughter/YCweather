@@ -1,10 +1,10 @@
-function callback_syncdata(hObject,eventdata)
+function callback_syncdata(hObject,eventdata,varargin)
 % CALLBACK_SYNCDATA syncs all weather and daily log data from server
 %__________________________________________________________________________
 %
 % SYNTAX: 
-%   callback_syncdata(hObject,'current')
-%   callback_syncdata(hObject,[])
+%   callback_syncdata(hObject)
+%   callback_syncdata(hObject,[],'menu')
 %
 % DESCRIPTION: 
 %   callback_syncdata(hObject,'current') syncs all data and daily logs 
@@ -32,10 +32,10 @@ try
     if ~exist(local,'dir'); mkdir(local); end
     syncdata(local,remote);
     
-% % 3 - UPDATE GUI    
-%     if ~isempty(eventdata); % Only calls with 'current' option
-%         callback_season(hObject,[]);
-%     end
+% % 3 - UPDATE GUI (Only calls with 'menu' option)
+    if ~isempty(varargin) && strcmpi(varargin{1},'menu'); % 
+        callback_season(hObject,[]);
+    end
 
 % 4 - ERROR CATCHING    
 catch
