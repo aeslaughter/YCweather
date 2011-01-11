@@ -1,0 +1,50 @@
+YCnorth
+North
+Yellowstone Club
+YCnorth.dat
+100
+TC
+#
+ArrayID,0,0,0
+year,0,0,0
+day,0,0,0
+hrmin,0,0,0
+Battery,1,V,Battery Voltage
+WindSpeed,1,m/s,Wind Speed
+WindDir,1,deg,Wind Direction
+Surface,1,C,Surface Temperature
+SWin,1,W/m^2,Incoming Shortwave
+SWref,1,W/m^2,Reflected Shortwave
+Longwave,1,W/m^2,Incoming Longwave
+Depth,1,cm,Snow Depth
+rawdepth,1,cm, Raw Snow Depth
+correction,0,0,0
+AirTemp,1,C,Air Temperature
+Humidity,1,%,Relative Humidity
+PIR_mV,1,V,Longwave Voltage
+CaseRes,1,ohm,Longwave Resistance
+TC00,1,C,Thermocouple (0 cm)
+TC02,1,C,Thermocouple (2 cm)
+TC04,1,C,Thermocouple (4 cm)
+TC06,1,C,Thermocouple (6 cm)
+TC08,1,C,Thermocouple (8 cm)
+TC10,1,C,Thermocouple (10 cm)
+TC12,1,C,Thermocouple (12 cm)
+TC14,1,C,Thermocouple (14 cm)
+TC16,1,C,Thermocouple (16 cm)
+TC18,1,C,Thermocouple (18 cm)
+TC20,1,C,Thermocouple (20 cm)
+TC22,1,C,Thermocouple (22 cm)
+TC24,1,C,Thermocouple (24 cm)
+TC26,1,C,Thermocouple (26 cm)
+TC28,1,C,Thermocouple (28 cm)
+TC30,1,C,Thermocouple (30 cm)
+TC32,1,C,Thermocouple (32 cm)
+TC34,1,C,Thermocouple (34 cm)
+TC36,1,C,Thermocouple (36 cm)
+TC38,1,C,Thermocouple (38 cm)
+Ground,1,C,Thermocouple (ground)
+#
+Time,calcwx_time,year,day,hrmin,CSI
+reflect,calcwx_flux,SWin,SWref,reflectivity
+surRH,calcwx_flux,WindSpeed,AirTemp,Surface,Humidity,RHsnow

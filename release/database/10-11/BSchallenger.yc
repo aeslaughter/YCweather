@@ -1,0 +1,17 @@
+BSchallenger
+Challenger
+Big Sky
+BSchallenger.dat
+none
+0
+#
+year,0,0,0
+month,0,0,0
+day,0,0,0
+hrmin,0,0,0
+AirTemp,1,F,Air Temperature
+WindSpd,1,mph, Wind Speed
+WindDir,1,deg, Wind Direrction
+WindMax,1,mph, Max. Wind Speed
+#
+Time,calcwx_time,year,month,day,hrmin,GNFAC

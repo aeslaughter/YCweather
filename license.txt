@@ -1,4 +1,4 @@
-Copyright (c) 2010, Andrew E. Slaughter
+Copyright (c) 2011, Andrew E. Slaughter
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

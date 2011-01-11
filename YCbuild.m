@@ -144,8 +144,19 @@ function copyDBfiles(instl)
     yc = dir([loc,'*.yc']);
     meso = [loc,'mesowest.txt'];
     
-    if ~isempty(dat); copyfile(dat,out,'f'); end
-    if ~isempty(yc);  copyfile(yc,out,'f'); end
+
+    if ~isempty(dat); 
+        for i = 1:length(dat); 
+            copyfile([loc,dat(i).name],out,'f'); 
+        end; 
+    end
+    
+    if ~isempty(yc); 
+        for i = 1:length(yc); 
+            copyfile([loc,yc(i).name],out,'f'); 
+        end;  
+    end
+    
     if exist(meso,'file'); copyfile(meso,out,'f'); end
 
 %--------------------------------------------------------------------------

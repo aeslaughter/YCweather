@@ -1,0 +1,17 @@
+BBbase
+Base
+Bridger Bowl
+BBbase.dat
+none
+0
+#
+year,0,0,0
+month,0,0,0
+day,0,0,0
+hrmin,0,0,0
+AirTemp,1,F,Air Temperature
+Humid,1,%,Relative Humidity
+WindSpeed,1,mph,Wind Speed
+WindMax,1,mph,Maximum Wind Velocity
+#
+Time,calcwx_time,year,month,day,hrmin,GNFAC
