@@ -1,4 +1,4 @@
-function callback_recent(hObject,eventdata,varargin)
+function callback_recent(hObject,~,varargin)
 % CALLBACK_RECENT builds and maintains the open recent list in file menu
 %__________________________________________________________________________
 % USAGE: callback_recent(hObject,eventdata,varargin)
@@ -23,25 +23,11 @@ function callback_recent(hObject,eventdata,varargin)
     delete(get(h.recent,'Children'));   % Remove any existing menus
     set(h.recent,'Visible','on');       % Make list visible
 
-% 2 - BUILD THE LIST OF RECENT FILES
-    % 2.1 - Case when no file list exists
-    if ~exist([cd,'\recent.txt'],'file'); list = {}; 
-
-    % 2.2 - Case when using an existing list
-    else
-        fid = fopen('recent.txt');                   % Opens file
-        list = textscan(fid,'%s','delimiter','\n');  % Reads strings
-        fclose(fid);                                 % Closes files
-        list = unique(list{1});                      % Removes duplicates
+% 2 - GATHER/CREATE LIST OF RECENT FILES
+    if ~ispref('YCweather','recent');
+        setpref('YCweather','recent',{});
     end
-
-    % 2.3 - Remove default.mat file from list
-        name = {};
-        for i = 1:length(list); [p,name{i}] = fileparts(list{i}); end
-        idx = strmatch('default',name); list(idx) = [];
-
-    % 2.4 - Remove duplicate entries
-        if length(list) > 10; list = list(1:10); end % Allow 10 entrys
+    list = getpref('YCweather','recent');
         
 % 3 - REMOVE LIST ITEMS THAT DO NOT EXIST
     idx = zeros(length(list),1);
@@ -56,7 +42,7 @@ function callback_recent(hObject,eventdata,varargin)
 % 5 - BUILD CALLBACKS FOR EACH FILE IN LIST
 if isempty(varargin);
     for i = 1:length(list);
-        [p,nm,ext] = fileparts(list{i});
+        [~,nm,ext] = fileparts(list{i});
         uimenu(h.recent,'Label',[nm,ext],'Callback',...
             {'callback_readWS',list{i}});
     end
@@ -67,6 +53,4 @@ else
 end
 
 % 7 - OVERWRITE CURRENT FILE WITH THE UPDATED LIST
-    fid = fopen([cd,'\recent.txt'],'w');
-    for j = 1:length(list); fprintf(fid,'%s\n',list{j}); end
-    fclose(fid);
+    setpref('YCweather','recent',unique(list));

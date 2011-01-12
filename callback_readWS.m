@@ -257,7 +257,7 @@ if ishandle(handle);
     loc = get(handle,'position');
     loc(1) = P(1); loc(2) = P(2);
     set(handle,'position',loc);
-    movegui(handle,'onscreen');
+    %movegui(handle,'onscreen');
 end
 
 %--------------------------------------------------------------------------
