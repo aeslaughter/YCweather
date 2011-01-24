@@ -56,6 +56,7 @@ try
         end
 
     % 2.3 - Add mesowest data
+    try
     mesofile = [db,'mesowest.txt'];
     mh = [h.mesowest_btn,h.mesowest_menu];
     set(mh,'enable','off');
@@ -76,6 +77,12 @@ try
             k = k + 1;
             set(mh,'enable','on');
         end
+    end
+    catch
+        mes = ['The MesoWest file (mesowest.txt) is not properly ',...
+            'structured, please see the help file.'];
+        warndlg(mes,'MesoWest Error');
+        S = rmfield(S,tag);
     end
     
     % 2.4 - Return if no data was collected

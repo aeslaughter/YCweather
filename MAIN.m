@@ -56,8 +56,8 @@ try
     callback_readWS(gui,[],[cd,'\default.mat']);  
     GUI = guidata(gui);
     GUI.main = gui;
-    GUI.version = 0.731;        
-    GUI.verdate = 'Jan. 12, 2011';
+    GUI.version = 0.732;        
+    GUI.verdate = 'Jan. 24, 2011';
     guidata(gui,GUI); 
     save('default.mat','-mat','-struct','GUI');       
     set(gui,'Visible','on');
