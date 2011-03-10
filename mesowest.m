@@ -163,9 +163,13 @@ function [tm,data,parm] = extractdata(C,stn)
     data = C(data_idx(1)+3:data_idx(2)-1); 
     
 % 4 - CONVERT TO CELL ARRAY STRINGS   
+    k = 1;
     for i = 1:length(data)
-        D = textscan(data{i},'%s','delimiter',',');
-        raw(i,1:length(D{1})) = D{1};
+        if ~isempty(data{i});
+            D = textscan(data{i},'%s','delimiter',',');
+            raw(k,1:length(D{1})) = D{1};
+            k = k + 1;
+        end
     end
 
 % 5 - CONVERT THE DATA TO A NUMERIC ARRAY   

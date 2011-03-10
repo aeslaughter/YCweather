@@ -175,7 +175,11 @@ function applyWS(hObject,GUIold,filename)
 % 4 - SET THE STATION BUTTONS
     btn = GUI.settings.stations;
     for i = 1:length(btn);
-        if isfield(h,btn{i}); set(h.(btn{i}),'Value',1); end
+        if isfield(h,btn{i}); 
+            set(h.(btn{i}),'Value',1);
+            fcn = get(h.(btn{i}),'callback');
+            feval(fcn,h.(btn{i}),[]);
+        end
     end
 
 % 5 - READ/PLOT GRAPHS
@@ -254,6 +258,7 @@ function set_window_position(handle,P)
 
 % Proceed if the window exists
 if ishandle(handle);
+    set(handle,'units','normalized');
     loc = get(handle,'position');
     loc(1) = P(1); loc(2) = P(2);
     set(handle,'position',loc);
