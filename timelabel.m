@@ -3,7 +3,7 @@ function [rng,tmin,tmax] = timelabel(tm)
 
     tmin = min(tm); tmax = max(tm);
     if (tmax - tmin) < 1; 
-        form = 'mm/dd HHh'; 
+        form = 'mm/dd HHMM'; 
     else
         form = 'mm/dd'; 
     end
