@@ -1,4 +1,4 @@
-function callback_readWS(hObject,eventdata,varargin)
+function callback_readWS(hObject,~,varargin)
 % READSLA - opens YCweather workspace *.mat file.
 %__________________________________________________________________________
 % USAGE: readWS(hObject,eventdata,varargin)

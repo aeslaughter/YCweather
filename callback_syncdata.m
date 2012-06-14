@@ -17,8 +17,16 @@ try
 % 1 - DEFINE DIRECTORY NAMES AND DESIRED FOLDER
     % 1.1 - Local database directory
         GUI = guidata(hObject);
-        database = GUI.settings.paths.database;
-        if ~exist(database,'dir'); mkdir(database); end
+        database = GUI.settings.paths.database
+        if ~exist(database,'dir'); 
+            try
+                mkdir(database);
+            catch
+                mes = ['Invalid database directory: ', database,...
+                    '. Delete the default.mat file to start again.'];
+                errorlog(mes);
+            end
+        end
         
     % 1.2 - Remote/local database directories to sync 
         if strcmpi(eventdata,'current'); 

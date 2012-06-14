@@ -24,7 +24,34 @@ function G = create_defaultWS
         G.settings.position = ps;
 
     % 2.3 - Paths
-        pt.database = [cd,'\database\']; pt.saved = [cd,'\saved\'];
+        % Get the users Documents path
+        if (isunix)
+            pth = getenv('HOME');
+        else
+            pth = getenv('USERPROFILE');
+        end     
+        
+        % Use current directory if the above fail and check for Ubuntu One
+        if isempty(pth)
+            pt.database = [cd, filesep, 'database', filesep]; 
+            pt.saved = [cd, filesep, 'saved', filesep]; 
+        
+        % Ubuntu One exists, use it    
+        elseif exist([pth, filesep, 'Ubuntu One'], 'dir');
+            pt.database = [pth, filesep,'Ubuntu One', filesep, 'YCweather',...
+                filesep, 'database', filesep]; 
+            pt.saved = [pth, 'Ubuntu One', filesep, 'YCweather',...
+                filesep, 'saved', filesep];  
+            
+        % Create a YCweather directory in Documents
+        else
+            pt.database = [pth, filesep,'Documents', filesep, 'YCweather',...
+                filesep, 'database', filesep]; 
+            pt.saved = [pth, 'Documents', filesep, 'YCweather',...
+                filesep, 'saved', filesep]; 
+        end
+        
+        % Set the database property
         G.settings.paths = pt;
   
 % 3 - OTHER ITEMS

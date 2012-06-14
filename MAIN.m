@@ -14,7 +14,7 @@ function gui = MAIN
 % CALLBACK: help
 % CALLBACK: exit
 % CALLBACK: about
-% SUBFUNTION: buildgui
+% SUBFUNCTION: buildgui
 % SUBFUNCTION: create_defaultWS 
 %__________________________________________________________________________
 close all;
@@ -46,8 +46,8 @@ try
         %str = ['!path=%PATH%;',cd]; eval(str);
 
 % 2 - AUTOMATICALLY DOWNLOAD LATEST DATA
-    update = GUI.settings.pref.autoWx;
-    if update == 1; callback_syncdata(gui,'current'); end
+    %update = GUI.settings.pref.autoWx;
+    %if update == 1; callback_syncdata(gui,'current'); end
 
 % 3 - BUILD THE GUI MENUS AND PANELS
     buildGUI(gui);        
@@ -221,8 +221,8 @@ function buildGUI(gui)
 
     % 3.3 - Data menu
         records_menu = uimenu('Parent',gui,'Label','Data','tag','Dmenu');
-            uimenu(records_menu,'Label','Check for new weather data',...
-                'Callback',{'callback_syncdata','menu'},'Accelerator','n');
+          %  uimenu(records_menu,'Label','Check for new weather data',...
+          %      'Callback',{'callback_syncdata','menu'},'Accelerator','n');
             uimenu(records_menu,'Label','Update MesoWest data',...
                 'Callback',{'callback_updatemesowest',true},'Accelerator','M',...
                 'enable','off','Tag','mesowest_menu');
