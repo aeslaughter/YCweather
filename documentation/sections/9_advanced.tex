@@ -1,5 +1,5 @@
 \msusection{Application Details} \label{sec:advanced}
-The following section details of the operation of YCweather.  This section is meant to aid researchers at the Subzero Science and Engineering Research Facility maintain and update the software.  YCweather was written with MATLAB version 7.9.0.529 (R2009b).  If you are using a newer version of MATLAB for editting YCweather the MATLAB run time component must be updated on all machines attempting to execute YCweather (see Section \ref{sec:compile} for additional details).
+The following section details of the operation of YCweather.  This section is meant to aid researchers at the Subzero Science and Engineering Research Facility maintain and update the software.  YCweather was written with MATLAB version 7.14.0.739 (R2012a).  If you are using a newer version of MATLAB for editting YCweather the MATLAB run time component must be updated on all machines attempting to execute YCweather (see Section \ref{sec:compile} for additional details).
 
 \msusubsection{Source Code}
 The source code for YCweather utilizes the \href{http://git-scm.com/}{git} version control system and the code may be pulled from \href{https://github.com/aeslaughter/YCweather}{github.com}. There a numerous Internet sources to aid in learning how to use both \href{http://git-scm.com/}{git} and \href{https://github.com/}{github}.
@@ -93,7 +93,7 @@ The \texttt{units.txt} file should be composed of rows containing the following 
 \end{figure}
 
 \msusubsection{Compiling and Implementing YCweather}\label{sec:compile}
-The information in this section details the process for building a YCweather executable file from the source code via MATLAB's compiler. Note, that if a 32-bit version of MATLAB is being used the compiler is included, otherwise a compiler must be installed (see \href{http://www.mathworks.com/support/compilers/R2010a/}{\nolinkurl{www.mathworks.com/support/compilers/R2010a/}}). The \texttt{mbuild -setup} function in MATLAB is used to setup your compiler initially.  
+The information in this section details the process for building a YCweather executable file from the source code via MATLAB's compiler. Note, that if a 32-bit version of MATLAB is being used the compiler is included, otherwise a compiler must be installed (see \href{http://www.mathworks.com/support/compilers/R2010a/}{\nolinkurl{www.mathworks.com/support/compilers/R2012a/}}). The \texttt{mbuild -setup} function in MATLAB is used to setup your compiler initially.  
 
 If any changes are made to the source code of YCweather the following information will make the updates available to all users running YCweather. The function \texttt{YCbuild.m} acts to automate the process of compiling YCweather into executable form as well as post the updated to the web folder.  The function requires two outside programs, WinSCP\footnote{\href{http://winscp.net}{WinSCP: winscp.net}} and InstallJammer\footnote{\href{http://www.installjammer.com/}{InstallJammer: www.installjammer.com}}.
 
@@ -104,6 +104,6 @@ This process relies on three files.  First, the two project files: YCweather.prj
 Once YCweather is complied it must also be uploaded to the website so that the changes will be made available to all users of the program.  This is done by executing the following: \texttt{>>YCbuild('web')}.  This removes the old files from the web and adds the new via WinSCP; access to the appropriate account on the MSU Department of Civil Engineering server is required. 
 
 \msusubsection{Website and Online Weather Database}\label{sec:web}
-The YCweather website, \href{http://www.coe.montana.edu/ce/subzero/snow/}{www.coe.montana.edu/ce/subzero/snow}, is hosted by the MSU College of Engineering and contains the installation files YCweather and the files for automatically updating YCweather.  These files are automatically generated during the compilation and posting process described in Section \ref{sec:compile}.
+The YCweather website, \href{http://aeslaughter.github.com/YCweather/}{aeslaughter.github.com/YCweather}, relies on \href{http://pages.github.com}{github:pages} for hosting the website. The web page itself is simply a branch of the YCweather repository, please refer to the \href{http://pages.github.com}{github:pages} site for details.
 
-YCweather also relies on an ftp accessible database hosted by the College of Engineering, which contains the weather files database directories that are accessed by YCweather for keeping the weather data up to date.  The MATLAB program \texttt{GNAFC.m} located on the server is executed hourly to keep the weather data current via CRONTAB.
+YCweather is relies on \href{https://one.ubuntu.com/dashboard/}{Ubuntu One} to automatically collect the most recent weather data. For additional details please refer to the YCweather website: \link{aeslaughter.github.com/YCweather}.
