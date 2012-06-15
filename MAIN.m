@@ -61,7 +61,7 @@ try
     GUI.version = 0.8;        
     GUI.verdate = 'June 15, 2012';
     guidata(gui,GUI); 
-    save('default.mat','-mat','-struct','GUI');       
+    save(dname,'-mat','-struct','GUI');       
     set(gui,'Visible','on');
 
 catch

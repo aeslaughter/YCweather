@@ -2,6 +2,10 @@ function errorlog(varargin)
 % ERRORLOG saves error information to errorlog.txt
 %__________________________________________________________________________
 
+% 0 - SET THE ERRORLOG FILE LOCATION
+    pth = fileparts(getpref('YCweather','default'));
+    fname = [pth,filesep,'errorlog.txt'];
+
 % 1 - RETRIVE ERROR INFORMATION
     try 
        err = lasterror; rethrow(err); 
@@ -30,7 +34,7 @@ function errorlog(varargin)
     end
 
 % 3 - WRITE INFO TO FILE
-    fid = fopen('errorlog.txt','a');
+    fid = fopen(fname,'a');
     for i = 1:length(a); fprintf(fid,'%s\n',a{i}); end
     fclose(fid);
 
