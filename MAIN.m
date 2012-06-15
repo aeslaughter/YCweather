@@ -5,17 +5,6 @@ function gui = MAIN
 %
 % INPUT: none
 % OUTPUT: gui - handle for the main program
-%
-% PROGRAM OUTLINE:
-% 1 - BUILD PROGRAM CONTROL WINDOW
-% 2 - AUTOMATICALLY DOWNLOAD LATEST DATA
-% 3 - BUILD THE GUI MENUS AND PANELS
-% 4 - INITILIZE THE PROGRAM AND SIDEBARS
-% CALLBACK: help
-% CALLBACK: exit
-% CALLBACK: about
-% SUBFUNCTION: buildgui
-% SUBFUNCTION: create_defaultWS 
 %__________________________________________________________________________
 close all;
 try
@@ -31,33 +20,46 @@ try
         set(gui,'units','normalized','HandleVisibility','on');
         
     % 1.3 - Load default file, creating if needed
-        def = create_defaultWS;
-        if ~exist([cd,'\default.mat'],'file');  
-            save('default.mat','-mat','-struct','def');
+        % Determine the location of the default file
+        if isunix
+            dname = [getenv('HOME'),filesep,'.YCweather',filesep,'default.mat'];
+            
+        else
+            dname = [getenv('APPDATA'),filesep,'YCweather',filesep,'default.mat'];
         end
-        GUI = load([cd,'\default.mat'],'-mat');
+        
+        % Create the directory if it does not exist
+        p = fileparts(dname);
+        if ~exist(p,'dir');
+            mkdir(p);
+        end
+        
+        % Define a preference for storing the default.mat file
+        setpref('YCweather','default',dname);
+    
+        % Create the default workspace if it does not exist
+        if ~exist(dname,'file'); 
+            def = create_defaultWS;            
+            save(dname,'-mat','-struct','def');
+        end
+        
+        % Load the default workspace and store in guidata
+        GUI = load(dname,'-mat');
         guidata(gui,GUI);
         
     % 1.4 - Create "saved" directory
-        svd = [cd,'\saved\'];
+        svd = GUI.settings.paths.saved;
         if ~exist(svd,'dir'); mkdir(svd); end
-        
-    % 1.5 - Add YCmain directory to PATH
-        %str = ['!path=%PATH%;',cd]; eval(str);
 
-% 2 - AUTOMATICALLY DOWNLOAD LATEST DATA
-    %update = GUI.settings.pref.autoWx;
-    %if update == 1; callback_syncdata(gui,'current'); end
-
-% 3 - BUILD THE GUI MENUS AND PANELS
+% 2 - BUILD THE GUI MENUS AND PANELS
     buildGUI(gui);        
           
-% 4 - INITILIZE THE PROGRAM AND SIDEBARS
-    callback_readWS(gui,[],[cd,'\default.mat']);  
+% 3 - INITILIZE THE PROGRAM AND SIDEBARS
+    callback_readWS(gui,[],dname);  
     GUI = guidata(gui);
     GUI.main = gui;
-    GUI.version = 0.75;        
-    GUI.verdate = 'Apr. 28, 2011';
+    GUI.version = 0.8;        
+    GUI.verdate = 'June 15, 2012';
     guidata(gui,GUI); 
     save('default.mat','-mat','-struct','GUI');       
     set(gui,'Visible','on');
@@ -203,9 +205,9 @@ function buildGUI(gui)
             {'callback_readWS'},'Separator','off','Accelerator','O');
         uimenu(file_menu,'Label','Open Recent','tag','recent');
         uimenu(file_menu,'Label','Set Default Workspace','Callback',...
-            {'callback_saveWS','default.mat'},'Separator','on');
+            {'callback_saveWS',getpref('YCweather','default')},'Separator','on');
         uimenu(file_menu,'Label','Open Default Workspace','Callback',...
-            {'callback_readWS','default.mat'},'Separator','off');
+            {'callback_readWS',getpref('YCweather','default')},'Separator','off');
         uimenu(file_menu,'Label','Preferences','Callback',...
             {'callback_pref'},'Separator','on');
         uimenu(file_menu,'Label','Exit','Callback',{@exit,gui},...

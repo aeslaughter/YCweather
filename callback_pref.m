@@ -1,4 +1,4 @@
-function callback_pref(hObject,eventdata)
+function callback_pref(hObject,~)
 % CALLBACK_PREF
 %__________________________________________________________________________
 % USAGE: callback_pref(hObject,eventdata)
@@ -13,7 +13,7 @@ function callback_pref(hObject,eventdata)
 % 2 - SET CALLBACKS
 % 3 - CALLBACK: CHANGE - sets the main gui settings to match those in the
 %       preferences window
-% 4 - CALLBACK: SETPREF - save or loads the default preferencs
+% 4 - CALLBACK: callback_setpref - save or loads the default preferencs
 % 5 - CALLBACK: button - gets a directory when browser button is pressed
 % 6 - CALLBACK: EXIT - closes the preferences window
 %__________________________________________________________________________
@@ -45,8 +45,8 @@ try
         set([h.change,h.applybutton],'Callback',{@change,'apply',gui});
         
     % 2.3 - Set and load default
-        set(h.setdefault,'Callback',{@setpref,'save',gui});
-        set(h.loaddefault,'Callback',{@setpref,'load',gui});
+        set(h.setdefault,'Callback',{@callback_setpref,'save',gui});
+        set(h.loaddefault,'Callback',{@callback_setpref,'load',gui});
         
     % 2.4 - Set broswer buttons for directories
         set(h.save_btn,'Callback',{@button});
@@ -61,15 +61,15 @@ end
 %--------------------------------------------------------------------------     
 % CALLBACK: CHANGE - sets the main gui settings to match those in the
 %       preferences window
-function change(hObject,eventdata,action,gui)
+function change(~,~,action,gui)
     applysettings(action,gui);
 
 %--------------------------------------------------------------------------   
-% CALLBACK: SETPREF - save or loads the default preferencs
-function setpref(hObject,eventdata,action,gui)
+% CALLBACK: callback_setpref - save or loads the default preferencs
+function callback_setpref(hObject,~,action,gui)
 % 1 - Collect the data from the default *.sla file
     GUI = guidata(gui);
-    loc = [cd,'\default.mat'];
+    loc = getpref('YCweather','default');
     GUIdef = load(loc,'-mat');
 
 % 2 - Save the new default values option 
@@ -89,7 +89,7 @@ end
 
 %--------------------------------------------------------------------------
 % CALLBACK: button - gets a directory when browser button is pressed
-function button(hObject,eventdata)  
+function button(hObject,~)  
 
 % 1 - Determine the button pressed    
     h = guihandles(hObject);
@@ -106,5 +106,5 @@ function button(hObject,eventdata)
  
 %--------------------------------------------------------------------------
 % CALLBACK: EXIT - closes the preferences window
-function exit(hObject,eventdata,gui)
+function exit(~,~,gui)
     close(gui);

@@ -50,31 +50,31 @@ switch action;
 
 % 2 - SET FOLDER AND FILE NAMES
     case 'release'
-        
-    % 2.1 - Command for compiling installer
-        m =['!"',inno,filesep,'compil32" /cc "installer_script.iss"'];
-        eval(m);
 
-    % 2.2 - Specific files to package into YCmain
+    % 2.1 - Specific files to package into YCmain
         files{1} = [cd,filesep,'release',filesep,'YCmain.exe'];
         files{2} = [cd,filesep,'release',filesep,'version.txt'];
         files{3} = [cd,filesep,'release',filesep,'help.pdf'];
         files{4} = [cd,filesep,'release',filesep,'mesowest.mwu'];
         files{5} = [cd,filesep,'release',filesep,'license.txt'];
         
-    % 2.3 - Create new version of help.pdf
+    % 2.2 - Create new version of help.pdf and update version
         latex = [cd,filesep,'documentation',filesep,'main_YCweather.pdf'];
         copyfile(latex, files{3},'f');
+        copyfile('license.txt',['release',filesep,'license.txt']);
 
-    % 2.4 - Create YCmain.zip and copy YCmain YCweather files to release
+    % 2.3 - Create YCmain.zip and copy YCmain YCweather files to release
         zip([cd,filesep,'release',filesep,'YCmain'],files);  
         copyfile([cd,filesep,'release',filesep,'version.txt'],cd,'f');
-
-    % 2.5 - Create Windows installer program
-        eval(iscc);
-      
+              
+    % 2.4 - Command for compiling installer
+        m =['!"',inno,filesep,'compil32" /cc "installer_script.iss"'];
+        eval(m);
+        
 % 3 - COPY DATA TO DROPBOX        
     case 'dropbox'
+        
+        % Copies the current years data to the dropbox folder
         copyDBfiles([dropbox,filesep,'YCweather']);
         
         

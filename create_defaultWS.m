@@ -36,19 +36,20 @@ function G = create_defaultWS
             pt.database = [cd, filesep, 'database', filesep]; 
             pt.saved = [cd, filesep, 'saved', filesep]; 
         
-        % Ubuntu One exists, use it    
-        elseif exist([pth, filesep, 'Dropbox'], 'dir');
-            pt.database = [pth, filesep,'Dropbox', filesep, 'YCweather',...
-                filesep, 'database', filesep]; 
-            pt.saved = [pth, 'Dropbox', filesep, 'YCweather',...
-                filesep, 'saved', filesep];  
-            
-        % Create a YCweather directory in Documents
+        % Use Documents and Dropbox folder
         else
-            pt.database = [pth, filesep,'Documents', filesep, 'YCweather',...
-                filesep, 'database', filesep]; 
-            pt.saved = [pth, 'Documents', filesep, 'YCweather',...
-                filesep, 'saved', filesep]; 
+            % Saved directory should not be in dropbox
+            pt.saved = [pth,filesep, 'Documents', filesep, 'YCweather',...
+                filesep, 'saved', filesep];             
+            
+            % Use dropbox directory if it exist, otherwise use Documents
+            if exist([pth, filesep, 'Dropbox'], 'dir');
+                pt.database = [pth, filesep,'Dropbox', filesep, 'YCweather',...
+                    filesep, 'database', filesep]; 
+            else
+                pt.database = [pth, filesep,'Documents', filesep, 'YCweather',...
+                    filesep, 'database', filesep]; 
+            end
         end
         
         % Set the database property

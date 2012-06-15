@@ -34,7 +34,6 @@ Source: "C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\releas
 Source: "C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\release\license.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\release\mesowest.mwu"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\release\version.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\release\winscp.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\release\YCmain.exe"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
