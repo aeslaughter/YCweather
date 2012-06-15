@@ -1,0 +1,8 @@
+*.asv
+build/
+database/
+documentation/
+errorlog.txt
+recent.txt
+release/readme.txt
+saved/
