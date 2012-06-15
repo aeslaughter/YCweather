@@ -37,10 +37,10 @@ function G = create_defaultWS
             pt.saved = [cd, filesep, 'saved', filesep]; 
         
         % Ubuntu One exists, use it    
-        elseif exist([pth, filesep, 'Ubuntu One'], 'dir');
-            pt.database = [pth, filesep,'Ubuntu One', filesep, 'YCweather',...
+        elseif exist([pth, filesep, 'Dropbox'], 'dir');
+            pt.database = [pth, filesep,'Dropbox', filesep, 'YCweather',...
                 filesep, 'database', filesep]; 
-            pt.saved = [pth, 'Ubuntu One', filesep, 'YCweather',...
+            pt.saved = [pth, 'Dropbox', filesep, 'YCweather',...
                 filesep, 'saved', filesep];  
             
         % Create a YCweather directory in Documents

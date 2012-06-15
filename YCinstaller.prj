@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deployment-project plugin="plugin.deploytool" plugin-version="1.0">
-  <configuration target="target.standalone.win" target-name="Windows Standalone Application" name="YCinstaller" location="C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4" file="C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\YCinstaller.prj" build-checksum="350652431">
+  <configuration target="target.standalone.win" target-name="Windows Standalone Application" name="YCinstaller" location="C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4" file="C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\YCinstaller.prj" build-checksum="4285378977">
     <param.project.name>C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\YCinstaller.prj</param.project.name>
     <param.target.type>Windows Standalone Application</param.target.type>
     <param.appname>YCweather</param.appname>
-    <param.intermediate>C:\Users\slaughter\Documents\MATLAB\build</param.intermediate>
-    <param.output>C:\Users\slaughter\Documents\MATLAB\release</param.output>
+    <param.intermediate>${PROJECT_ROOT}\build</param.intermediate>
+    <param.output>${PROJECT_ROOT}\release</param.output>
     <param.embed.ctf>true</param.embed.ctf>
     <param.tbx_on_path>
       <item>all</item>
@@ -58,16 +58,14 @@
       <file>${PROJECT_ROOT}\YCweather.m</file>
     </fileset.main>
     <fileset.resources />
-    <fileset.package>
-      <file special-file="file.mcr" reference-mode="direct">${MATLAB_ROOT}\toolbox\compiler\deploy\win64\MCRInstaller.exe</file>
-    </fileset.package>
+    <fileset.package />
     <build-deliverables>
-      <file name="readme.txt" location="C:\Users\slaughter\Documents\MATLAB\release" optional="true">C:\Users\slaughter\Documents\MATLAB\release\readme.txt</file>
-      <file name="YCweather.exe" location="C:\Users\slaughter\Documents\MATLAB\release" optional="false">C:\Users\slaughter\Documents\MATLAB\release\YCweather.exe</file>
+      <file name="readme.txt" location="${PROJECT_ROOT}\release" optional="true">C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\release\readme.txt</file>
+      <file name="YCweather.exe" location="${PROJECT_ROOT}\release" optional="false">C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\release\YCweather.exe</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB\R2012a</root>
+      <root>C:\Program Files (x86)\MATLAB\R2012a</root>
       <path>
         <directory>C:\Users\slaughter\Documents\MATLAB</directory>
         <directory>${MATLAB_ROOT}\toolbox\matlabxl\matlabxl</directory>
@@ -181,6 +179,9 @@
         <directory>${MATLAB_ROOT}\toolbox\curvefit\curvefitdemos</directory>
         <directory>${MATLAB_ROOT}\toolbox\daq\daq</directory>
         <directory>${MATLAB_ROOT}\toolbox\daq\daqguis</directory>
+        <directory>${MATLAB_ROOT}\toolbox\daq\daqblks\daqblks</directory>
+        <directory>${MATLAB_ROOT}\toolbox\daq\daqblks\daqmasks</directory>
+        <directory>${MATLAB_ROOT}\toolbox\daq\daqblks\daqmex</directory>
         <directory>${MATLAB_ROOT}\toolbox\daq\daqdemos</directory>
         <directory>${MATLAB_ROOT}\toolbox\database\database</directory>
         <directory>${MATLAB_ROOT}\toolbox\database\vqb</directory>
@@ -624,9 +625,9 @@
       <linux>false</linux>
       <solaris>false</solaris>
       <osver>6.1</osver>
-      <os32>false</os32>
-      <os64>true</os64>
-      <arch>win64</arch>
+      <os32>true</os32>
+      <os64>false</os64>
+      <arch>win32</arch>
       <matlab>true</matlab>
     </platform>
   </configuration>

@@ -10,6 +10,9 @@ function YCweather
 %__________________________________________________________________________
 
 try
+% 0 - WEB PATH
+   % pth = '
+    
 % 1 - FIND THE AVAILABLE AND CURRENT VERSIONS
     % 1.1 - Find available version     
         try
