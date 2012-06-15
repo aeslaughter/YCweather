@@ -7,7 +7,6 @@
 /YCinstallerFiles/.svn
 /YCinstallerFiles/build
 /YCinstallerFiles/build.log
-/release/*.exe
 /release/readme.txt
 *.log
 *.aux
