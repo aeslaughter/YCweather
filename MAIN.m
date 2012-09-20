@@ -58,8 +58,8 @@ try
     callback_readWS(gui,[],dname);  
     GUI = guidata(gui);
     GUI.main = gui;
-    GUI.version = 0.8;        
-    GUI.verdate = 'June 15, 2012';
+    GUI.version = 0.81;        
+    GUI.verdate = 'Sept. 9, 2012';
     guidata(gui,GUI); 
     save(dname,'-mat','-struct','GUI');       
     set(gui,'Visible','on');
