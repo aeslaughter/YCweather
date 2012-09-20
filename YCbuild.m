@@ -75,7 +75,7 @@ switch action;
     case 'dropbox'
         
         % Copies the current years data to the dropbox folder
-        copyDBfiles([dropbox,filesep,'YCweather']);
+        copyDBfiles(dropbox);
         
         
 end
