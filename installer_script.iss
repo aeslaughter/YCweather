@@ -7,8 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{F0C2E064-9008-41B2-897B-CC078F8E773F}
 AppName=YCweather
-AppVersion=1.0
-;AppVerName=YCweather 1.0
+AppVerName={cm:NameAndVersion,YCweather,0.8}
 AppPublisher=Andrew E Slaughter
 AppPublisherURL=http://aeslaughter.github.com/YCweather/
 AppSupportURL=http://aeslaughter.github.com/YCweather/
