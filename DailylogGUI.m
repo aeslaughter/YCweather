@@ -81,7 +81,7 @@ function callback_log(hObject,eventdata)
 
 %--------------------------------------------------------------------------
 % CALLBACK: callback_buttons
-function callback_buttons(hObject,eventdata)
+function callback_buttons(hObject,~)
 % CALLBACK_BUTTONS cycles forward and back for associated button and list
 
 % Determine the button that was pushed and assign handle and movement
@@ -107,7 +107,7 @@ function callback_buttons(hObject,eventdata)
 
 %--------------------------------------------------------------------------
 % CALLBACK: openimages
-function openimages(hObject,eventdata)
+function openimages(hObject,~)
     
 % Extract user data from open images file menu
     user = get(hObject,'UserData');
@@ -127,7 +127,7 @@ function openimages(hObject,eventdata)
    
 %--------------------------------------------------------------------------
 % CALLBACK: savedailylog
-function savedailylog(hObject,eventdata)
+function savedailylog(hObject,~)
 % SAVEDAILYLOG saves daily log information
 %__________________________________________________________________________
 % USAGE: savedailylog(hObject,eventdata,main,loc)
@@ -194,18 +194,18 @@ function savedailylog(hObject,eventdata)
 
 %--------------------------------------------------------------------------
 % CALLBACK: openwindows
-function openwindows(hObject,eventdata)
+function openwindows(hObject,~)
     name = get(hObject,'UserData'); % Current filename
     winopen(name);
     
 %--------------------------------------------------------------------------
 % CALLBACK: EXIT
-function exit(hObject,eventdata) 
+function exit(hObject,~) 
     h = guihandles(hObject); close(h.figure1);
     
 %--------------------------------------------------------------------------
 % CALLBACK: DOWNLOAD
-function download(hObject,eventdata)
+function download(hObject,~)
 
 % 1 - Gather data from GUI
     h = guihandles(hObject);

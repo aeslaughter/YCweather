@@ -16,7 +16,7 @@ try
 % 1 - FIND THE AVAILABLE AND CURRENT VERSIONS
     % 1.1 - Find available version     
         try
-            available = urlread([pth,version.txt']);
+            available = urlread([pth,'version.txt']);
             available = str2double(available);
         catch
             disp('Connection failed, cannot test version.');
@@ -25,7 +25,7 @@ try
 
     % 1.2 - Determine the current version
         if exist([cd,filesep,'version.txt'],'file'); 
-            current = dlmread([cd,'\version.txt']);
+            current = dlmread([cd,filesep,'version.txt']);
         else
             current = 0;
         end
