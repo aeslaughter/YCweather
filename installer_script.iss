@@ -15,9 +15,9 @@ AppUpdatesURL=http://aeslaughter.github.com/YCweather/
 DefaultDirName={pf}\YCweather
 DefaultGroupName=YCweather
 AllowNoIcons=yes
-LicenseFile=C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\release\license.txt
+LicenseFile=M:\YCsource\YCweather\release\license.txt
 OutputBaseFilename=setup
-OutputDir=C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\release
+OutputDir=M:\YCsource\YCweather\release
 Compression=lzma
 SolidCompression=yes
 
@@ -28,12 +28,12 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\release\YCweather.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\release\help.pdf"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\release\license.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\release\mesowest.mwu"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\release\version.txt"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\slaughter\Documents\MSUResearch\MATLABcode\YCweather_v4\release\YCmain.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "M:\YCsource\YCweather\release\YCweather.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "M:\YCsource\YCweather\release\help.pdf"; DestDir: "{app}"; Flags: ignoreversion
+Source: "M:\YCsource\YCweather\release\license.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "M:\YCsource\YCweather\release\mesowest.mwu"; DestDir: "{app}"; Flags: ignoreversion
+Source: "M:\YCsource\YCweather\release\version.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "M:\YCsource\YCweather\release\YCmain.exe"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

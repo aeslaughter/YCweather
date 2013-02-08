@@ -11,12 +11,13 @@ function YCweather
 
 try
 % 0 - WEB PATH
-    pth = 'http://aeslaughter.github.com/YCweather/release/';
+    dwnldpth = 'http://aeslaughter.github.com/YCweather/release/';
+    verspth = 'https://rawgithub.com/aeslaughter/YCweather/master/';
     
 % 1 - FIND THE AVAILABLE AND CURRENT VERSIONS
     % 1.1 - Find available version     
         try
-            available = urlread([pth,'version.txt']);
+            available = urlread([verspth,'version.txt']);
             available = str2double(available);
         catch
             disp('Connection failed, cannot test version.');
@@ -54,7 +55,7 @@ try
 
     % 3.2 - Download the new software
         try
-            url = [pth,'YCmain.zip'];
+            url = [dwnldpth,'YCmain.zip'];
             unzip(url,cd);
             pause(1);
         catch 
