@@ -11,7 +11,7 @@ function YCweather
 
 try
 % 0 - WEB PATH
-    dwnldpth = 'http://aeslaughter.github.com/YCweather/release/';
+    dwnldpth = 'https://rawgithub.com/aeslaughter/YCweather/master/release/';
     verspth = 'https://rawgithub.com/aeslaughter/YCweather/master/';
     
 % 1 - FIND THE AVAILABLE AND CURRENT VERSIONS
