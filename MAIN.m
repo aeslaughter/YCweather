@@ -11,11 +11,11 @@ try
     
 % 1 - BUILD PROGRAM CONTROL WINDOW
     % 1.1 - Default Position settings
-        loc = [1,1,12.5,6.05];
+        loc = [0,0,12.5,6.05];
 
     % 1.2 - Program Control created
         gui = dialog('Resize','off','WindowStyle','normal','Units',...
-            'centimeters','Position',loc,'Name','Program Control',...
+            'centimeters','OuterPosition',loc,'Name','Program Control',...
             'IntegerHandle','off','visible','off','tag','YCweather');
         set(gui,'units','normalized','HandleVisibility','on');
         
@@ -58,8 +58,8 @@ try
     callback_readWS(gui,[],dname);  
     GUI = guidata(gui);
     GUI.main = gui;
-    GUI.version = 0.811;        
-    GUI.verdate = 'Sept. 9, 2012';
+    GUI.version = 0.813;        
+    GUI.verdate = 'Feb. 7, 2013';
     guidata(gui,GUI); 
     save(dname,'-mat','-struct','GUI');       
     set(gui,'Visible','on');

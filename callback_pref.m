@@ -49,8 +49,8 @@ try
         set(h.loaddefault,'Callback',{@callback_setpref,'load',gui});
         
     % 2.4 - Set broswer buttons for directories
-        set(h.save_btn,'Callback',{@button});
         set(h.database_btn,'Callback',{@button});
+        set(h.save_btn,'Callback',{@button});
 
 catch
     mes = ['Error opening preferences window (callback_pref.m), ',...

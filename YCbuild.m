@@ -16,7 +16,8 @@ function YCbuild(action, varargin)
 
 % 0 - USER SPECIFIED LOCATIONS
 dropbox = 'C:\Users\slaughter\Dropbox\YCweather';
-inno    = 'C:\Program Files (x86)\Inno Setup 5';
+%inno    = 'C:\Program Files (x86)\Inno Setup 5'; %For 64 bit systems
+inno    = 'C:\Program Files\Inno Setup 5';  %For 32 bit systems
 
 % 1 - RUN MATLAB COMPILIER TO BUILD A NEW RELEASE APPLICATION 
 switch action;

@@ -19,7 +19,7 @@ function G = create_defaultWS
         G.settings.pref = p;
 
     % 2.2 - Position
-        ps.main = [0.02,0.5]; ps.varwindow = [0.3,0.2]; 
+        ps.main = [0.02,0.02]; ps.varwindow = [0.3,0.2]; 
         ps.preferences = [0.4,0.5];
         G.settings.position = ps;
 

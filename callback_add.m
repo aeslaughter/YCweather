@@ -33,8 +33,9 @@ try
         str = get(h.add_month,'String');
         month = str{get(h.add_month,'Value')};
         [yr,mo] = getyear(season,month);
-
-        dy = num2str(get(h.add_day,'Value'));
+        
+        formatspec = '%02.0f';  %djwalters added to get appropriate file naming
+        dy = num2str(get(h.add_day,'Value'),formatspec);
         name = [mo,'-',dy,'-',yr,];
        
 % 2 - ADD NEW DAILY LOG TO DATABASE
@@ -86,10 +87,14 @@ switch type
         if isnumeric(newfile); return; end
 
     % 3.3 - Build list of images
+        try
+        copyfile([loc,newfile],imagefolder,'f');  %djwalters added to copy images to dropbox folder
+        catch
+        end
         fid = fopen([imagefolder,'\images.txt'],'a+');
         if ~iscell(newfile); newfile = {newfile}; end
         for i = 1:length(newfile); 
-            files = [loc,newfile{i}]; 
+            files = [newfile{i}];
             fprintf(fid,'%s\n',files);
         end
         fclose(fid);

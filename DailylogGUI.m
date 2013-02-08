@@ -48,7 +48,6 @@ function DailylogGUI_OpeningFcn(hObject, eventdata, h, varargin)
         set(h.save,'Callback',{@savedailylog});
         set(h.openwindows,'Callback',{@openwindows});
         set(h.openimages,'Callback',{@openimages});
-        set(h.download,'Callback',{@download});
 
 %--------------------------------------------------------------------------
 % OUTPUTS FROM THIS FUNCTION ARE RETURNED TO THE COMMAND LINE.
@@ -202,31 +201,6 @@ function openwindows(hObject,~)
 % CALLBACK: EXIT
 function exit(hObject,~) 
     h = guihandles(hObject); close(h.figure1);
-    
-%--------------------------------------------------------------------------
-% CALLBACK: DOWNLOAD
-function download(hObject,~)
-
-% 1 - Gather data from GUI
-    h = guihandles(hObject);
-    user1 = get(h.popup,'UserData');
-    user2 = get(h.openimages,'UserData');
-    
-% 2 - Build the local directory    
-    imagefolder = regexprep(user1{1},'DailyLogs','Images');
-    datefolder = datestr(user2{1},'mm-dd-yy');
-    local = [imagefolder,datefolder];
-    if ~exist(local,'dir'); mkdir(local); end
-    
-% 3 - Build the remote directory 
-    GUI = guidata(user1{2});
-    db = length(GUI.settings.paths.database);
-    remote = ['/pub/snow/db',local(db:length(local)),'/'];
-    remote = regexprep(remote,'\','/');
-
-% 4 - Sync the data and open images  
-    syncdata(local,remote,'Downloading images, please wait...','on');
-    openimages(h.openimages,[]);
     
 %--------------------------------------------------------------------------
 % SUBFUNCTION: insertdailylog
